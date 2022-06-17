@@ -1,17 +1,17 @@
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import React from 'react';
-import BottomTabNavigator from './BottomTabNavigator';
-
+import SignInScreen from '../Screens/SignInScreen';
+import SignUpScreen from '../Screens/SignUpScreen';
 const Stack = createNativeStackNavigator();
 
 const AuthStack = () => {
   return (
-    <BottomTabNavigator
-      firstScreen={SignInScreen}
-      firstScreenName="SignIn"
-      secondScreen={SignUpScreen}
-      secondScreenName="SignUp"
-    />
+    <Stack.Navigator
+      initialRouteName="SignInScreen"
+      screenOptions={{headerShown: false}}>
+      <Stack.Screen component={SignInScreen} name="SignIn" />
+      <Stack.Screen component={SignUpScreen} name="SignUp" />
+    </Stack.Navigator>
   );
 };
 

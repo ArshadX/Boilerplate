@@ -13,6 +13,7 @@ import {GoogleSignin} from '@react-native-google-signin/google-signin';
 import {View, Text} from 'react-native';
 import Button from '../../components/Button';
 import RNBootSplash from 'react-native-bootsplash';
+import AuthStack from './AuthStack';
 const UserLoggedIn = ({user}) => {
   const {logout, toggleTheme} = React.useContext(AuthContext);
   return (
@@ -27,7 +28,13 @@ const UserLoggedIn = ({user}) => {
 const Routes = () => {
   const [initializing, setInitializing] = React.useState(true);
   const {user, setUser, isDarkTheme} = React.useContext(AuthContext);
-
+  const myTheme = {
+    ...DarkTheme,
+    colors: {
+      ...DarkTheme.colors,
+      text: '#ffffff',
+    },
+  };
   // Handle user state changes
   function onAuthStateChanged(user) {
     setUser(user);
@@ -44,17 +51,8 @@ const Routes = () => {
   return (
     <NavigationContainer
       onReady={() => RNBootSplash.hide()}
-      theme={isDarkTheme ? DarkTheme : DefaultTheme}>
-      {user ? (
-        <UserLoggedIn user={user} />
-      ) : (
-        <BottomTabNavigator
-          firstScreen={SignInScreen}
-          firstScreenName="SignIn"
-          secondScreen={SignUpScreen}
-          secondScreenName="SignUp"
-        />
-      )}
+      theme={isDarkTheme ? myTheme : DefaultTheme}>
+      {user ? <UserLoggedIn user={user} /> : <AuthStack />}
     </NavigationContainer>
   );
 };

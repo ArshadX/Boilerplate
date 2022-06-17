@@ -1,13 +1,17 @@
 import {StyleSheet, Dimensions} from 'react-native';
 
 export const textInputStyle = StyleSheet.create({
-  container: {
+  containerDark: {
     width: Dimensions.get('window').width - 40,
-    borderColor: '#FF0000',
-    borderWidth: 1,
+    backgroundColor: '#abb2b9',
+    borderRadius: 100,
+    marginBottom: 20,
   },
-  textarea: {
-    color: '#000000',
+  containerLight: {
+    width: Dimensions.get('window').width - 40,
+    backgroundColor: '#808b96',
+    borderRadius: 100,
+    marginBottom: 20,
   },
 });
 
@@ -16,14 +20,28 @@ export const signInStyle = StyleSheet.create({
     flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
+    backgroundColor: '#ffffff',
   },
-  title: {
+  titleLight: {
+    fontSize: 30,
+    color: '#000000',
+  },
+  titleDark: {
     fontSize: 30,
     color: '#ffffff',
   },
   textarea: {
     marginBottom: 10,
     marginTop: 10,
+  },
+  textareaLightTheme: {
+    color: '#000000',
+  },
+  textareaDarkTheme: {
+    color: '#000000',
+  },
+  text: {
+    color: '#ffffff',
   },
 });
 

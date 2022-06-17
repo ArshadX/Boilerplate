@@ -1,15 +1,13 @@
 import React from 'react';
-import {TextInput, View} from 'react-native';
-import {textInputStyle} from '../styles/styles';
-const Text_Input = ({placeholder, onChangeText}) => {
+import {TextInput} from 'react-native';
+import {AuthContext} from '../container/nav/AuthProvider';
+const Text_Input = ({placeholder, onChangeText, style}) => {
   return (
-    <View style={textInputStyle.container}>
-      <TextInput
-        placeholder="type in hefre"
-        onChangeText={onChangeText}
-        style={textInputStyle.textarea}
-      />
-    </View>
+    <TextInput
+      placeholder={placeholder}
+      onChangeText={onChangeText}
+      style={style}
+    />
   );
 };
 
