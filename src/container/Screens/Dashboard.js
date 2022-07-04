@@ -1,10 +1,14 @@
 import React from 'react';
 import {StatusBar, Switch, Text, View} from 'react-native';
+import Button from '../../components/Button';
 import {defaultStyle} from '../../styles/styles';
 import {AuthContext} from '../nav/AuthProvider';
 const Dashboard = () => {
-  const {isDarkTheme, toggleTheme} = React.useContext(AuthContext);
-
+  const {isDarkTheme, toggleTheme, logout, isGoogleLogin, logoutLocal} =
+    React.useContext(AuthContext);
+  const LogOut = () => {
+    isGoogleLogin ? logout() : logoutLocal();
+  };
   return (
     <View
       style={isDarkTheme ? defaultStyle.containerDark : defaultStyle.container}>
@@ -29,6 +33,7 @@ const Dashboard = () => {
           onValueChange={toggleTheme}
           value={isDarkTheme}
         />
+        <Button title="Logout" onPress={() => LogOut()} />
       </View>
     </View>
   );

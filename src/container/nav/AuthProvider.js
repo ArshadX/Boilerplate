@@ -6,6 +6,7 @@ export const AuthContext = createContext();
 const AuthProvider = ({children}) => {
   const [user, setUser] = useState(null);
   const [isDarkTheme, setisDarkTheme] = React.useState(false);
+  const [isGoogleLogin, setisGoogleLogin] = React.useState(false);
   return (
     <AuthContext.Provider
       value={{
@@ -29,6 +30,13 @@ const AuthProvider = ({children}) => {
         logout: async () => {
           try {
             await auth().signOut();
+          } catch (e) {
+            console.log(e);
+          }
+        },
+        logoutLocal: () => {
+          try {
+            setUser(null);
           } catch (e) {
             console.log(e);
           }

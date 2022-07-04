@@ -41,8 +41,11 @@ export const signInStyle = StyleSheet.create({
   textareaDarkTheme: {
     color: '#000000',
   },
-  text: {
+  textDark: {
     color: '#ffffff',
+  },
+  textLight: {
+    color: '#000000',
   },
 });
 

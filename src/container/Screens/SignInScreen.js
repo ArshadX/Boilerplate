@@ -2,14 +2,14 @@ import React from 'react';
 import {View, Text, Pressable, StatusBar} from 'react-native';
 import Button from '../../components/Button';
 import Text_Input from '../../components/Text_Input';
-import {signInStyle, textInputStyle} from '../../styles/styles';
+import {defaultStyle, signInStyle, textInputStyle} from '../../styles/styles';
 
 import {GoogleSigninButton} from '@react-native-google-signin/google-signin';
 import {AuthContext} from '../nav/AuthProvider';
 const SignInScreen = ({navigation}) => {
   const [email, setEmail] = React.useState('');
   const [password, setPassword] = React.useState('');
-  const {googleLogin, isDarkTheme, user, setUser} =
+  const {googleLogin, isDarkTheme, user, setUser, setisGoogleLogin} =
     React.useContext(AuthContext);
   const submitForum = e => {
     e.preventDefault();
@@ -30,7 +30,7 @@ const SignInScreen = ({navigation}) => {
       />
       <Text
         style={isDarkTheme ? signInStyle.titleDark : signInStyle.titleLight}>
-        Login to your account
+        Login to your account (type random text in the fields)
       </Text>
       <View
         style={
@@ -70,10 +70,13 @@ const SignInScreen = ({navigation}) => {
         style={{width: 192, height: 48}}
         size={GoogleSigninButton.Size.Wide}
         color={GoogleSigninButton.Color.Dark}
-        onPress={() => googleLogin().then(() => console.log('heelo'))}
+        onPress={() => googleLogin().then(() => setisGoogleLogin(true))}
       />
       <Pressable onPress={() => navigation.navigate('SignUp')}>
-        <Text style={signInStyle.text}>Create Account</Text>
+        <Text
+          style={isDarkTheme ? signInStyle.textDark : signInStyle.textLight}>
+          Create Account
+        </Text>
       </Pressable>
     </View>
   );
