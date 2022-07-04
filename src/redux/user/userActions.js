@@ -23,3 +23,7 @@ export const fetchUsersFailure = error => {
     payload: error,
   };
 };
+const login = async user => {
+  dispatch(fetchUsersRequest);
+  await dispatch(fetchUsersSuccess(user));
+};

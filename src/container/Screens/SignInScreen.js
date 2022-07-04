@@ -1,5 +1,5 @@
 import React from 'react';
-import {View, Text, Pressable} from 'react-native';
+import {View, Text, Pressable, StatusBar} from 'react-native';
 import Button from '../../components/Button';
 import Text_Input from '../../components/Text_Input';
 import {signInStyle, textInputStyle} from '../../styles/styles';
@@ -9,9 +9,25 @@ import {AuthContext} from '../nav/AuthProvider';
 const SignInScreen = ({navigation}) => {
   const [email, setEmail] = React.useState('');
   const [password, setPassword] = React.useState('');
-  const {googleLogin, isDarkTheme} = React.useContext(AuthContext);
+  const {googleLogin, isDarkTheme, user, setUser} =
+    React.useContext(AuthContext);
+  const submitForum = e => {
+    e.preventDefault();
+    if (email !== '' && password !== '') {
+      setUser({email: email, password: password});
+    }
+  };
   return (
-    <View style={signInStyle.container}>
+    <View
+      style={
+        isDarkTheme
+          ? [signInStyle.container, {backgroundColor: '#000000'}]
+          : [signInStyle.container, {backgroundColor: '#ffffff'}]
+      }>
+      <StatusBar
+        barStyle="light-content"
+        backgroundColor={isDarkTheme ? '#000000' : '#ffffff'}
+      />
       <Text
         style={isDarkTheme ? signInStyle.titleDark : signInStyle.titleLight}>
         Login to your account
@@ -48,7 +64,7 @@ const SignInScreen = ({navigation}) => {
           }
         />
       </View>
-      <Button title="Login" onPress={() => console.log('Logged in')} />
+      <Button title="Login" onPress={submitForum} />
 
       <GoogleSigninButton
         style={{width: 192, height: 48}}

@@ -13,6 +13,11 @@ const BottomTabNavigator = ({
   thirdScreenName,
   forthScreenName,
   initialRouteName,
+  firstbarIcon,
+  secondbarIcon,
+  thirdbarIcon,
+  forthbarIcon,
+  iconColor,
 }) => {
   return (
     <Tab.Navigator
@@ -23,7 +28,9 @@ const BottomTabNavigator = ({
           component={firstScreen}
           name={firstScreenName}
           options={{
-            tabBarIcon: () => <Icon name="account" color="#000" size={20} />,
+            tabBarIcon: () => (
+              <Icon name={firstbarIcon} color={iconColor} size={20} />
+            ),
           }}
         />
       )}
@@ -33,7 +40,7 @@ const BottomTabNavigator = ({
           name={secondScreenName}
           options={{
             tabBarIcon: () => (
-              <Icon name="account-plus" color="#000" size={20} />
+              <Icon name={secondbarIcon} color={iconColor} size={20} />
             ),
           }}
         />

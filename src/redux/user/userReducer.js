@@ -6,6 +6,7 @@ import {
 
 const initialState = {
   isloading: false,
+  isSocialLogin: false,
 };
 
 const reducer = (state = initialState, action) => {
@@ -19,11 +20,12 @@ const reducer = (state = initialState, action) => {
       return {
         ...state,
         isloading: false,
+        email: action?.payload?.email,
+        password: action?.payload?.password,
       };
     case FETCH_USERS_FAILURE:
       return {
         isloading: false,
-
         error: 'User does not exist',
       };
     default:

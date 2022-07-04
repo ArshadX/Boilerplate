@@ -9,9 +9,11 @@ export const textInputStyle = StyleSheet.create({
   },
   containerLight: {
     width: Dimensions.get('window').width - 40,
-    backgroundColor: '#808b96',
+    backgroundColor: '#ebedef',
     borderRadius: 100,
     marginBottom: 20,
+    borderWidth: 0.2,
+    elevation: 1,
   },
 });
 
@@ -20,7 +22,6 @@ export const signInStyle = StyleSheet.create({
     flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
-    backgroundColor: '#ffffff',
   },
   titleLight: {
     fontSize: 30,
@@ -66,5 +67,62 @@ export const buttonStyles = StyleSheet.create({
   },
   pressOut: {
     backgroundColor: '#4169e1',
+  },
+});
+export const defaultStyle = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: '#ffffff',
+  },
+  containerDark: {
+    flex: 1,
+    backgroundColor: '#000000',
+  },
+  title: {
+    color: '#000000',
+    fontWeight: 'bold',
+    fontSize: 40,
+  },
+  text: {
+    color: '#000000',
+  },
+  headerContainer: {
+    flex: 1,
+    alignItems: 'center',
+  },
+  footerContainer: {
+    backgroundColor: '#ffffff',
+    borderTopLeftRadius: 30,
+    borderTopRightRadius: 30,
+    elevation: 10,
+    padding: 30,
+  },
+  image: {
+    width: '100%',
+    height: '100%',
+  },
+  imageContainer: {
+    width: 120,
+    height: 120,
+    borderWidth: 1,
+    borderRadius: 60,
+    overflow: 'hidden',
+    borderColor: '#696969',
+  },
+  listItem: {
+    borderBottomWidth: 1,
+    borderBottomColor: '#0000ff',
+    marginBottom: 30,
+    padding: 5,
+  },
+  listTitles: {
+    fontWeight: 'bold',
+    fontFamily: 'cursive sens-serif',
+    color: '#000000',
+  },
+  titleDark: {
+    color: '#ffffff',
+    fontWeight: 'bold',
+    fontSize: 40,
   },
 });
